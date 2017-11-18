@@ -9,3 +9,7 @@
 .bold {
   font-weight: bold;
 }
+
+:global .green {
+  color: green;
+}

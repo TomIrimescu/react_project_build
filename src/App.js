@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import './App.css';
+import AppClass from './App.css';
 import Person from './Person/Person';
+import {blue} from '../src/index.css';
 
 class App extends Component {
   state = {
@@ -78,10 +79,10 @@ class App extends Component {
     
     const classes = [];
     if (this.state.persons.length <= 2) {
-      classes.push('red'); // classes = ['red']
+      classes.push(AppClass.red); // classes = ['red']
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold'); // classes = ['red', 'bold']
+      classes.push(AppClass.bold); // classes = ['red', 'bold']
     }
     if (this.state.persons.length === 0) {
       classes.length = 0;  // classes = [] --this works with a 'const' declaration
@@ -89,8 +90,8 @@ class App extends Component {
     }
     
     return (
-        <div className="App">
-          <h1>Hi, I'm a React App</h1>
+        <div className={AppClass.App}>
+          <h1 className={blue}>Hi, I'm a React App</h1>
           <p className={classes.join(' ')}>This is really working!</p>
           <button
             style={style}
