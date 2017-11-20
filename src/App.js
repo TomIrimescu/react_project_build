@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import AppStyle from './App.css';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
   state = {
@@ -28,7 +29,7 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
     
-    this.setState( {persons: persons} );
+    this.setState({persons: persons});
     
   };
   
@@ -45,21 +46,23 @@ class App extends Component {
     this.setState({showPersons: !doesShow});
   };
   
-  render()  {
+  render() {
     //region Conditional Content
     let persons = null;
-    let btnClass  = '';
+    let btnClass = '';
     
     if (this.state.showPersons) {
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
-            return <Person
-              click={() => this.deletePersonHandler(index)}
-              name={person.name}
-              age={person.age}
-              key={person.id}
-              changed={(event) => this.nameChangedHandler(event, person.id)}/>
+            return <ErrorBoundary key={person.id}>
+              {/*higher order component - key must be on outer element in map function instead of on Person*/}
+                      <Person
+                        click={() => this.deletePersonHandler(index)}
+                        name={person.name}
+                        age={person.age}
+                        changed={(event) => this.nameChangedHandler(event, person.id)} />
+                    </ErrorBoundary>
           })}
         </div>
       );
@@ -81,15 +84,15 @@ class App extends Component {
     }
     
     return (
-        <div className={AppStyle.App}>
-          <h1 className={AppStyle.blue}>Hi, I'm a React App</h1> {/* example of imported style from random stylesheet */}
-          <p className={classes.join(' ')}>This is really working!</p>
-          <button
-            className={btnClass}
-            onClick={this.togglePersonsHandler}>Toggle Persons
-          </button>
-          {persons} {/* Conditional Content inserted */}
-        </div>
+      <div className={AppStyle.App}>
+        <h1 className={AppStyle.blue}>Hi, I'm a React App</h1> {/* example of imported style from random stylesheet */}
+        <p className={classes.join(' ')}>This is really working!</p>
+        <button
+          className={btnClass}
+          onClick={this.togglePersonsHandler}>Toggle Persons
+        </button>
+        {persons} {/* Conditional Content inserted */}
+      </div>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
   }
