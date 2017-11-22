@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
+
 import AppStyle from './App.css';
-import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Persons from "../components/Persons/Persons";
+import Cockpit from "../components/Cockpit/Cockpit";
 
 class App extends Component {
   state = {
@@ -49,48 +50,21 @@ class App extends Component {
   render() {
     //region Conditional Content
     let persons = null;
-    let btnClass = '';
     
     if (this.state.showPersons) {
-      persons = (
-        <div>
-          {this.state.persons.map((person, index) => {
-            return <ErrorBoundary key={person.id}>
-              {/*higher order component - key must be on outer element in map function instead of on Person*/}
-                      <Person
-                        click={() => this.deletePersonHandler(index)}
-                        name={person.name}
-                        age={person.age}
-                        changed={(event) => this.nameChangedHandler(event, person.id)} />
-                    </ErrorBoundary>
-          })}
-        </div>
-      );
-      
-      btnClass = AppStyle.Red;
+      persons = <Persons
+            persons={this.state.persons}
+            clicked={this.deletePersonHandler}
+            changed={this.nameChangedHandler} />;
     }
     //endregion
     
-    const classes = [];
-    if (this.state.persons.length <= 2) {
-      classes.push(AppStyle.red); // classes = ['red']
-    }
-    if (this.state.persons.length <= 1) {
-      classes.push(AppStyle.bold); // classes = ['red', 'bold']
-    }
-    if (this.state.persons.length === 0) {
-      classes.length = 0;  // classes = [] --this works with a 'const' declaration
-      // classes = []; // classes = [] --this only works if 'classes' is declared with 'let'
-    }
-    
     return (
       <div className={AppStyle.App}>
-        <h1 className={AppStyle.blue}>Hi, I'm a React App</h1> {/* example of imported style from random stylesheet */}
-        <p className={classes.join(' ')}>This is really working!</p>
-        <button
-          className={btnClass}
-          onClick={this.togglePersonsHandler}>Toggle Persons
-        </button>
+        <Cockpit
+          showPersons={this.state.showPersons}
+          persons={this.state.persons}
+          clicked={this.togglePersonsHandler} />
         {persons} {/* Conditional Content inserted */}
       </div>
     );
