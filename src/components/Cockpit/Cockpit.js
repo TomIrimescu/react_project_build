@@ -22,14 +22,13 @@ const cockpit = (props) => {
   
   return(
     <div className={CockpitStyle.Cockpit}>
-      <h1 className={CockpitStyle.blue}>Hi, I'm a React App</h1> {/* example of imported style from random stylesheet */}
+      <h1 className={CockpitStyle.blue}>{props.appTitle}</h1> {/* example of imported style from random stylesheet */}
       <p className={classes.join(' ')}>This is really working!</p>
       <button
         className={btnClass}
-        onClick={props.clicked}>Toggle Persons
-      </button>
+        onClick={props.clicked}>Toggle Persons</button>
     </div>
   );
-};
+} ;
 
 export default cockpit;

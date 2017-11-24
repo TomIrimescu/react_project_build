@@ -5,7 +5,22 @@ import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 
 class App extends Component {
-  state = {
+  constructor(props) {
+    super(props);
+    // console.log('Log inside constructor [props.title]: ' + props.title);
+    console.log('[App.js] Inside Constructor', props);
+    this.state = { // option 1 for initializing state - 'this' keyword is required
+      persons: [
+        {id: 'hhhd', name: 'Max', age: 28},
+        {id: 'yhhh', name: 'Manu', age: 29},
+        {id: 'kjkjk', name: 'Stephanie', age: 26}
+      ],
+      otherState: 'some other value',
+      showPersons: false
+    };
+  }
+  // console.log('Log outside constructor [this.props.title]: ' + this.props.title);
+  /*  state = {  // option 2 preferred approach for initializing state - outside constructor
     persons: [
       {id: 'hhhd', name: 'Max', age: 28},
       {id: 'yhhh', name: 'Manu', age: 29},
@@ -13,7 +28,15 @@ class App extends Component {
     ],
     otherState: 'some other value',
     showPersons: false
-  };
+  };*/
+  
+  componentWillMount() {
+    console.log('[App.js] Inside componentWillMount()');
+  }
+  
+  componentDidMount() {
+    console.log('[App.js] Inside componentDidMount()');
+  }
   
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => {
@@ -48,6 +71,7 @@ class App extends Component {
   };
   
   render() {
+    console.log('[App.js] Inside render()');
     //region Conditional Content
     let persons = null;
     
@@ -58,10 +82,11 @@ class App extends Component {
             changed={this.nameChangedHandler} />;
     }
     //endregion
-    
+
     return (
       <div className={AppStyle.App}>
         <Cockpit
+          appTitle={this.props.title}
           showPersons={this.state.showPersons}
           persons={this.state.persons}
           clicked={this.togglePersonsHandler} />
