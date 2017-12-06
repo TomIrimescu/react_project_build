@@ -12,7 +12,6 @@
 # misc
 .idea
 /react-complete-guide.iml
-.DS_Store
 .env.local
 .env.development.local
 .env.test.local
