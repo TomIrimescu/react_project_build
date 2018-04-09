@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PersonStyle from "./Person.css";
+import WithClass from "../../../hoc/WithClass";
 
 class Person extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class Person extends Component {
   render() {
     console.log("[Person.js] Inside render()");
     return (
-      <div className={PersonStyle.Person}>
+      <WithClass classes={PersonStyle.Person}>
         {/*example of global class ':global .green {color: green;}'*/}
         <p className="green" onClick={this.props.click}>
           I'm {this.props.name} and I am {this.props.age} years old!
@@ -29,7 +30,7 @@ class Person extends Component {
           onChange={this.props.changed}
           value={this.props.name}
         />
-      </div>
+      </WithClass>
     );
   }
 }
