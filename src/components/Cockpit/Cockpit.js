@@ -1,12 +1,13 @@
 import React from "react";
 
 import CockpitStyle from "./Cockpit.css";
+import Aux from "../../hoc/Auxiliary";
 
 const cockpit = props => {
   const classes = [];
-  let btnClass = "";
+  let btnClass = CockpitStyle.Button;
   if (props.showPersons) {
-    btnClass = CockpitStyle.Red;
+    btnClass = [CockpitStyle.Button, CockpitStyle.Red].join(" ");
   }
 
   if (props.persons.length <= 2) {
@@ -21,15 +22,15 @@ const cockpit = props => {
   }
 
   return (
-    <div className={CockpitStyle.Cockpit}>
-      <h1 className={CockpitStyle.blue}>{props.appTitle}</h1>{" "}
-      {/* example of imported style from random stylesheet */}
+    <Aux>
+      <h1 className={CockpitStyle.blue}>{props.appTitle}</h1>
       <p className={classes.join(" ")}>This is really working!</p>
       <button className={btnClass} onClick={props.clicked}>
         Toggle Persons
       </button>
-    </div>
+    </Aux>
   );
+  
 };
 
 export default cockpit;
