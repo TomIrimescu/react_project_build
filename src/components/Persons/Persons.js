@@ -22,7 +22,7 @@ class Persons extends PureComponent {
     );
   }
 
-/*  shouldComponentUpdate(nextProps, nextState) {
+  /*  shouldComponentUpdate(nextProps, nextState) {
     console.log(
       "[UPDATE Persons.js] Inside shouldComponentUpdate",
       nextProps,

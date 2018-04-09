@@ -3,7 +3,8 @@ import React, { PureComponent } from "react";
 import AppStyle from "./App.css";
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
-import WithClass from "../hoc/WithClass";
+import Aux from "../hoc/Auxiliary";
+import withClass from "../hoc/withClass";
 
 class App extends PureComponent {
   constructor(props) {
@@ -39,8 +40,8 @@ class App extends PureComponent {
   componentDidMount() {
     console.log("[App.js] Inside componentDidMount()");
   }
-  
-/*  shouldComponentUpdate(nextProps, nextState) {
+
+  /*  shouldComponentUpdate(nextProps, nextState) {
     console.log(
       "[UPDATE App.js] Inside shouldComponentUpdate",
       nextProps,
@@ -50,7 +51,7 @@ class App extends PureComponent {
       nextState.showPersons !== this.state.showPersons;
     // return true;
   }*/
-  
+
   componentWillUpdate(nextProps, nextState) {
     console.log(
       "[UPDATE App.js] Inside componentWillUpdate",
@@ -58,7 +59,7 @@ class App extends PureComponent {
       nextState
     );
   }
-  
+
   componentDidUpdate() {
     console.log("[UPDATE App.js] Inside componentDidUpdate");
   }
@@ -111,8 +112,14 @@ class App extends PureComponent {
     //endregion
 
     return (
-      <WithClass classes={AppStyle.App}>
-        <button onClick={() => {this.setState({showPersons: true})}}>Show Persons</button>
+      <Aux>
+        <button
+          onClick={() => {
+            this.setState({ showPersons: true });
+          }}
+        >
+          Show Persons
+        </button>
         <Cockpit
           appTitle={this.props.title}
           showPersons={this.state.showPersons}
@@ -120,9 +127,9 @@ class App extends PureComponent {
           clicked={this.togglePersonsHandler}
         />
         {persons} {/* Conditional Content inserted */}
-      </WithClass>
+      </Aux>
     );
   }
 }
 
-export default App;
+export default withClass(App, AppStyle.App);

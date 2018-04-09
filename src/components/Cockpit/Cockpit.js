@@ -30,7 +30,6 @@ const cockpit = props => {
       </button>
     </Aux>
   );
-  
 };
 
 export default cockpit;
