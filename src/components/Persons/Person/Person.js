@@ -3,6 +3,7 @@ import PersonStyle from "./Person.css";
 import Aux from "../../../hoc/Auxiliary";
 import withClass from "../../../hoc/withClass";
 import PropTypes from "prop-types";
+import { AuthContext } from "../../../containers/App";
 
 class Person extends Component {
   constructor(props) {
@@ -30,6 +31,9 @@ class Person extends Component {
     console.log("[Person.js] Inside render()");
     return (
       <Aux classes={PersonStyle.Person}>
+        <AuthContext.Consumer>
+        {auth => auth ? <p>I'm authenticated!</p> : null}
+        </AuthContext.Consumer>
         {/*example of global class ':global .green {color: green;}'*/}
         <p className="green" onClick={this.props.click}>
           I'm {this.props.name} and I am {this.props.age} years old!

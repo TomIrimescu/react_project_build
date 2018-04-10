@@ -6,6 +6,8 @@ import Cockpit from "../components/Cockpit/Cockpit";
 import Aux from "../hoc/Auxiliary";
 import withClass from "../hoc/withClass";
 
+export const AuthContext = React.createContext(false);
+
 class App extends PureComponent {
   constructor(props) {
     super(props);
@@ -20,7 +22,8 @@ class App extends PureComponent {
       ],
       otherState: "some other value",
       showPersons: false,
-      toggleClicked: 0
+      toggleClicked: 0,
+      authenticated: false
     };
   }
   // console.log('Log outside constructor [this.props.title]: ' + this.props.title);
@@ -100,6 +103,10 @@ class App extends PureComponent {
       };
     });
   };
+  
+  loginHandler = () => {
+    this.setState({authenticated: true});
+  };
 
   render() {
     console.log("[App.js] Inside render()");
@@ -130,9 +137,13 @@ class App extends PureComponent {
           appTitle={this.props.title}
           showPersons={this.state.showPersons}
           persons={this.state.persons}
+          login={this.loginHandler}
           clicked={this.togglePersonsHandler}
+          
         />
-        {persons} {/* Conditional Content inserted */}
+        <AuthContext.Provider value={this.state.authenticated}>
+          {persons}
+        </AuthContext.Provider> {/* Conditional Content inserted */}
       </Aux>
     );
   }
