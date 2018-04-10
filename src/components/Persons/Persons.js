@@ -19,9 +19,9 @@ class Persons extends PureComponent {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) { // AVOID
     console.log(
-      "[UPDATE Persons.js] Inside componentWillReceiveProps",
+      "AVOID [UPDATE Persons.js] Inside componentWillReceiveProps",
       nextProps
     );
   }
