@@ -24,11 +24,11 @@ const cockpit = props => {
   return (
     <Aux>
       <h1 className={CockpitStyle.blue}>{props.appTitle}</h1>
-      <p className={classes.join(" ")}>This is really working!</p>
+      <p className={classes.join(" ")}>Fun with React!</p>
       <button className={btnClass} onClick={props.clicked}>
         Toggle Persons
       </button>
-      <button onClick={props.login}>Log in</button>
+      <button className={CockpitStyle.buttonSpacer} onClick={props.login}>Log in</button>
     </Aux>
   );
 };

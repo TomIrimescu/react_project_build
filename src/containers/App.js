@@ -143,6 +143,7 @@ class App extends PureComponent {
     return (
       <Aux>
         <button
+          className={AppStyle.buttonSpacer}
           onClick={() => {
             this.setState({ showPersons: true });
           }}

@@ -5,7 +5,7 @@ import App from "./containers/App";
 import registerServiceWorker from "./registerServiceWorker";
 
 ReactDOM.render(
-  <App title="React JS Rocks!" />,
+  <App title="React Rocks!" />,
   document.getElementById("root")
 );
 registerServiceWorker();
