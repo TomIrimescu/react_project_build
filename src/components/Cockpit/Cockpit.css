@@ -26,6 +26,7 @@
   font: inherit;
   color: white;
   cursor: pointer;
+  border-radius: 6px;
 }
 
 .Button:hover {

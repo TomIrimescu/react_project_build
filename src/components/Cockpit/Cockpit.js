@@ -29,6 +29,7 @@ const cockpit = props => {
         Toggle Persons
       </button>
       <button className={CockpitStyle.buttonSpacer} onClick={props.login}>Log in</button>
+      <button onClick={props.logout}>Log out</button>
     </Aux>
   );
 };
