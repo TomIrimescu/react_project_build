@@ -12,9 +12,9 @@ class Person extends Component {
     this.inputElement = React.createRef();
   }
 
-  componentWillMount() {
+/*  componentWillMount() { // AVOID
     console.log("[Person.js] Inside componentWillMount()");
-  }
+  }*/
 
   componentDidMount() {
     console.log("[Person.js] Inside componentDidMount()");

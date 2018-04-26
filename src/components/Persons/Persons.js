@@ -8,9 +8,9 @@ class Persons extends PureComponent {
     this.lastPersonRef = React.createRef();
   }
 
-  componentWillMount() {
+/*  componentWillMount() { // AVOID
     console.log("[Persons.js] Inside componentWillMount()");
-  }
+  }*/
 
   componentDidMount() {
     console.log("[Persons.js] Inside componentDidMount()");
@@ -19,12 +19,12 @@ class Persons extends PureComponent {
     }
   }
 
-  componentWillReceiveProps(nextProps) { // AVOID
+/*  componentWillReceiveProps(nextProps) { // AVOID
     console.log(
       "AVOID [UPDATE Persons.js] Inside componentWillReceiveProps",
       nextProps
     );
-  }
+  }*/
 
   /*  shouldComponentUpdate(nextProps, nextState) {
     console.log(
@@ -38,13 +38,13 @@ class Persons extends PureComponent {
     // return true;
   }*/
 
-  componentWillUpdate(nextProps, nextState) {
+/*  componentWillUpdate(nextProps, nextState) { // AVOID
     console.log(
       "[UPDATE Persons.js] Inside componentWillUpdate",
       nextProps,
       nextState
     );
-  }
+  }*/
 
   componentDidUpdate() {
     console.log("[UPDATE Persons.js] Inside componentDidUpdate");

@@ -37,9 +37,9 @@ class App extends PureComponent {
     showPersons: false
   };*/
 
-  componentWillMount() { // AVOID
+/*  componentWillMount() { // AVOID
     console.log("AVOID [App.js] Inside componentWillMount()");
-  }
+  }*/
 
   componentDidMount() {
     console.log("[App.js] Inside componentDidMount()");
@@ -56,15 +56,15 @@ class App extends PureComponent {
     // return true;
   }*/
 
-  componentWillUpdate(nextProps, nextState) { // AVOID
+/*  componentWillUpdate(nextProps, nextState) { // AVOID
     console.log(
-      "AVOID [UPDATE App.js] Inside componentWillUpdate",
+      "[UPDATE App.js] Inside componentWillUpdate",
       nextProps,
       nextState
     );
-  }
+  }*/
   
-  static getDerivedStateFromProps(nextProps, prevState) {
+/*  static getDerivedStateFromProps(nextProps, prevState) { // AVOID
     console.log(
       "[UPDATE App.js] Inside getDerivedStateFromProps",
       nextProps,
@@ -72,7 +72,7 @@ class App extends PureComponent {
     );
     
     return prevState;
-  }
+  }*/
   
   getSnapshotBeforeUpdate() {
     console.log(
