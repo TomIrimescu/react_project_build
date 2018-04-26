@@ -78,6 +78,8 @@ class App extends PureComponent {
     console.log(
       "[UPDATE App.js] Inside getSnapshotBeforeUpdate"
     );
+    
+    return null;
   }
   
   componentDidUpdate() {
