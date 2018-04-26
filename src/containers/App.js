@@ -64,7 +64,7 @@ class App extends PureComponent {
     );
   }*/
   
-/*  static getDerivedStateFromProps(nextProps, prevState) { // AVOID
+  static getDerivedStateFromProps(nextProps, prevState) { // NEW
     console.log(
       "[UPDATE App.js] Inside getDerivedStateFromProps",
       nextProps,
@@ -72,9 +72,9 @@ class App extends PureComponent {
     );
     
     return prevState;
-  }*/
+  }
   
-  getSnapshotBeforeUpdate() {
+  getSnapshotBeforeUpdate() { // NEW
     console.log(
       "[UPDATE App.js] Inside getSnapshotBeforeUpdate"
     );
